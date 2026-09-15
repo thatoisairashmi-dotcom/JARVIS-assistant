@@ -1,0 +1,5 @@
+speechrecognition
+pyttsx3
+pyautogui
+anthropic
+python-dotenv
