@@ -1,5 +1,7 @@
 import subprocess
 import webbrowser
+import pyautogui
+import time
 
    # map spoken app names -> actual Windows commands
 APP_MAP = {
@@ -38,3 +40,7 @@ def open_app(app_name: str) -> str:
         return f"Opening {app_name}."
 
     return f"I don't know how to open {app_name} yet."
+def type_text(text: str) -> str:
+       time.sleep(1)  # gives you a moment to click into the right window
+       pyautogui.typewrite(text, interval=0.03)
+       return f"Typed: {text}"

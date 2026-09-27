@@ -5,6 +5,7 @@
    - otherwise -> ask Gemini (with memory of the conversation)
    """
 
+import re
 import os
 from dotenv import load_dotenv
 from google import genai
@@ -31,9 +32,16 @@ chat = client.chats.create(
 def think(command: str) -> str:
     lower = command.strip().lower()
 
-    if lower.startswith("open "):
-        app_name = lower.replace("open ", "").strip()
-        return system_control.open_app(app_name)
+    open_match = re.search(r'\bopen\b\s+(.*)', lower)
+    if open_match:
+       app_name = open_match.group(1).strip()
+       return system_control.open_app(app_name)
+
+    type_match = re.search(r'\btype\b\s+', lower)
+    if type_match:
+        start_index = type_match.end()
+        text_to_type = command[start_index:].strip()
+        return system_control.type_text(text_to_type)
 
     if "code" in lower or "error" in lower or "bug" in lower:
         return coding_buddy.help_with(command)
@@ -49,6 +57,4 @@ def think(command: str) -> str:
            return "I've hit my daily limit of questions for today, sir. Please try again tomorrow, or ask me to open apps in the meantime."
 
        return "Sorry, I couldn't reach my brain right now."
-    except Exception as e:
-        print(f"ERROR DETAILS: {e}")
-        return "Sorry, I couldn't reach my brain right now."
+   
