@@ -1,8 +1,10 @@
+import pytesseract
+from PIL import ImageGrab
 import subprocess
 import webbrowser
 import pyautogui
 import time
-
+pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
    # map spoken app names -> actual Windows commands
 APP_MAP = {
     "notepad": "notepad",
@@ -44,3 +46,8 @@ def type_text(text: str) -> str:
        time.sleep(1)  # gives you a moment to click into the right window
        pyautogui.typewrite(text, interval=0.03)
        return f"Typed: {text}"
+def read_screen_text() -> str:
+       """Takes a screenshot and extracts any visible text from it."""
+       screenshot = ImageGrab.grab()
+       text = pytesseract.image_to_string(screenshot)
+       return text
