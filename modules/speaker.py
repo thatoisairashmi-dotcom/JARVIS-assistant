@@ -12,7 +12,7 @@ def clean_for_speech(text: str) -> str:
 
 def say(text: str, language="en-IN"):
     global _current_engine
-    print(f"JARVIS: {text}")
+    print(f"Aries: {text}")
     spoken_text = clean_for_speech(text)
 
     engine = pyttsx3.init()

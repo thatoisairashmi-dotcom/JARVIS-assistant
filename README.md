@@ -1,4 +1,5 @@
-# JARVIS — Personal PC Voice Assistant
+# Aries — Personal PC Voice Assistant
+   (A.R.I.E.S. — Adaptive Real-time Interactive Execution System)
 
 A voice-controlled assistant that can open apps, answer questions, control the PC, and act as a coding buddy.
 
@@ -14,7 +15,7 @@ A voice-controlled assistant that can open apps, answer questions, control the P
 
 ## Project structure
 ```
-jarvis-assistant/
+Aries-assistant/
 ├── main.py              # entry point — the main loop
 ├── modules/
 │   ├── listener.py       # speech-to-text (mic -> text)

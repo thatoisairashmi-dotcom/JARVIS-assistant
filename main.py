@@ -1,5 +1,5 @@
 """
-   JARVIS — main loop.
+   ARIES — main loop.
    Flow: listen -> think (brain) -> act (system control / coding buddy) -> speak
    Press ESC at any time while JARVIS is talking to interrupt it.
    """
@@ -16,7 +16,7 @@ LANGUAGES = {
 
 def speak_with_interrupt(text, language, silent=False):
     if silent:
-        print(f"JARVIS (silent): {text}")
+        print(f"ARIES(silent): {text}")
         system_control.type_text(text)
         return
 
@@ -28,7 +28,7 @@ def speak_with_interrupt(text, language, silent=False):
             key = msvcrt.getch()
             if key == b'\x1b':  # Esc key
                 speaker.stop_speaking()
-                print("JARVIS: Okay, stopped.")
+                print("ARIES: Okay, stopped.")
                 break
 
     speech_thread.join()

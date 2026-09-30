@@ -20,7 +20,7 @@ chat = client.chats.create(
     config=types.GenerateContentConfig(
         http_options=types.HttpOptions(timeout=10000),
         system_instruction=(
-            "You are JARVIS, a voice assistant. Keep answers short and "
+            "You are ARIES, a voice assistant. Keep answers short and "
             "conversational, like you're speaking out loud — 2-3 sentences "
             "max unless the user clearly asks for detail. Never use markdown "
             "formatting like asterisks, hashtags, or bullet points. Never "
